@@ -45,32 +45,25 @@ function updateText() {
     adjustTextSize();
 }
 
-// js/text.js
-
-// Fungsi untuk memperbarui teks di dalam kontainer 'brat'
 function updateText() {
     const textInput = document.getElementById('textInput').value;
     const textElement = document.getElementById('text');
-    // Jika input kosong, kembalikan ke teks default 'brat'
     textElement.innerText = textInput || 'brat';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const downloadBtn = document.getElementById('downloadBtn');
 
-    // Jika tombol download ditemukan, tambahkan event listener
     if (downloadBtn) {
         downloadBtn.addEventListener('click', () => {
             const elementToCapture = document.getElementById('container');
 
-            // Gunakan html2canvas untuk menangkap elemen
             html2canvas(elementToCapture, {
-                backgroundColor: '#ABE085', // Pastikan warna latar sesuai
-                scale: 2 // Tingkatkan skala untuk gambar yang lebih tajam (resolusi lebih tinggi)
+                backgroundColor: '#ABE085',
+                scale: 2
             }).then(canvas => {
-                // Buat elemen <a> sementara untuk memicu download
                 const link = document.createElement('a');
-                link.download = 'brat-image.png'; // Nama file saat diunduh
+                link.download = 'brat-image.png';
                 link.href = canvas.toDataURL();
                 link.click();
             }).catch(error => {
